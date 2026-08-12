@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Magazine Template - Nature In One Number</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES (RESTORED LIGHT SHELL)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #eceae6;
+      --bg-editorial-paper: #FAF6EB; /* Signature ivory reading pane */
+      --color-black: #080808;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: #222;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL (White Background)
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: #ffffff; /* Restored white shell */
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain;
+      /* filter: invert(1); REMOVED to protect original logo color */
+    }
+
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #000000;
+    }
+
+    .meta-col { flex: 1; }
+    .meta-center { text-align: center; letter-spacing: 0.22em; }
+    .meta-right { text-align: right; }
+
+    /* ==========================================================================
+       DYNAMIC CONTENT SECTION (IVORY READING PANE)
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 4rem 5rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.03);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .article-host h1 {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      color: #111111;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    
+    .article-host .subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--color-gold);
+      text-align: center;
+      margin-bottom: 4rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================================================
+       NUMBER CARDS GRID (LIGHT THEME STYLING)
+       ========================================================================== */
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin: 3rem 0;
+    }
+
+    .number-card {
+      background-color: #080808;
+      border-top: 3px solid var(--color-gold);
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .number-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .number-card .big-number {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .number-card .card-title {
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: #111111;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .number-card p {
+      font-size: 1rem;
+      color: #e5e5e5;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       SIGNATURE MESSAGE BOX (LIGHT THEME)
+       ========================================================================== */
+    .signature-box {
+      background: #ffffff;
+      border: 1px solid #d4d0c8;
+      padding: 4rem 3rem;
+      text-align: center;
+      margin-top: 5rem;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    
+    .signature-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: var(--color-gold);
+    }
+
+    .signature-box h3 {
+      font-family: var(--font-meta);
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: #666666;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .signature-box h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: #111111;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .signature-box .infinity {
+      font-size: 3rem;
+      color: var(--color-gold);
+      margin: 1.5rem 0;
+    }
+
+    .signature-box .conclusion {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #333333;
+      max-width: 800px;
+      margin: 2rem auto 0;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       3. EDITORIAL FOOTER
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: normal;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #f5f5f5;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1.5px;
+      background-color: var(--color-gold);
+      margin: 1.2rem auto;
+      opacity: 0.85;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d1d1d1;
+    }
+
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Inside This Issue Button */
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 860px) {
+      .article-host { padding: 3rem 2rem; }
+      .article-host h1 { font-size: 2rem; }
+      .signature-box { padding: 3rem 1.5rem; }
+      .signature-box h2 { font-size: 1.5rem; }
+      .nav-issue-btn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.2rem;
+      }
+      .nav-issue-btn:hover {
+        transform: translateX(50%) translateY(-2px);
+      }
+      .editorial-footer {
+        padding: 2.2rem 1.2rem 6.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="magazine-page">
+
+    <div class="brand-logo-wrapper">
+      <img src="../home-images/main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+    </div>
+
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">VOL — 02</div>
+        <div class="meta-col meta-center">MONTHLY EDITION</div>
+        <div class="meta-col meta-right">AUG 2026</div>
+      </div>
+    </header>
+
+    <section class="editorial-stage">
+      <article class="article-host">
+        
+        <h1>NATURE — IN ONE NUMBER </h1>
+        <div class="subtitle">A legacy written long before civilisation </div>
+
+        <div class="numbers-grid">
+          
+          <div class="number-card">
+            <div class="big-number">4.54 BILLION YEARS </div>
+            <div class="card-title">Earth’s age </div>
+            <p>Nature’s laboratory has been running for roughly 4.54 billion years — long before humanity existed to name its experiments. </p>
+          </div>
+
+          <div class="number-card">
+            <div class="big-number">3.77 BILLION YEARS </div>
+            <div class="card-title">Evidence of ancient life </div>
+            <p>Fossil evidence indicates that life was already present on Earth at least 3.77 billion years ago — survival has a history far older than civilisation. </p>
+          </div>
+
+          <div class="number-card">
+            <div class="big-number">2.4 BILLION YEARS </div>
+            <div class="card-title">The atmosphere changed </div>
+            <p>Around 2.4 billion years ago, the Great Oxidation Event transformed Earth’s atmosphere;  biological activity helped reshape the planet itself. </p>
+          </div>
+
+          <div class="number-card">
+            <div class="big-number">71% </div>
+            <div class="card-title">The living ocean’s domain </div>
+            <p>One global ocean covers about 71% of Earth’s surface — a planetary system continuously regulating climate, heat and life. </p>
+          </div>
+
+          <div class="number-card">
+            <div class="big-number">MILLIONS OF YEARS </div>
+            <div class="card-title">Adaptation without a blueprint </div>
+            <p>Species have continuously responded to changing environments through evolution, behaviour, structure and ecological relationships — without a central designer. </p>
+          </div>
+
+          <div class="number-card">
+            <div class="big-number">∞ CONTINUITY </div>
+            <div class="card-title">The greatest number of all </div>
+            <p>Nature does not measure success by what survives unchanged.  Its greatest achievement is the ability of life to adapt, regenerate and continue. </p>
+          </div>
+
+        </div> 
+        
+        <div class="signature-box">
+          <h3>Magazine's Signature Message </h3>
+          <h2>Not “100%.”<br>Not “zero emissions.”<br>Not “net zero.” </h2>
+          
+          <div class="infinity">∞ CONTINUITY </div>
+          
+          <p style="color: #666666; font-family: var(--font-meta); text-transform: uppercase; letter-spacing: 0.1em;">Because that connects directly to our title: </p>
+          <h2 style="color: var(--color-gold); font-size: 1.5rem; margin-top: 1rem;">BEYOND SUSTAINABILITY — THE CONTINUITY </h2>
+          
+          <div class="conclusion">
+            Nature's legacy is not simply that it survived for billions of years. <br>
+            <strong style="color: #111111;">Its legacy is that it kept changing without losing the ability to continue. </strong>
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      Growth doesn't always follow the blueprint; Sometimes, it rewrites it mid-stride
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span class="sep">|</span> 2026 <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <a href="../index.html" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>
