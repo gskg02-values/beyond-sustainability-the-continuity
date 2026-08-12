@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | The Green Blueprint</title>
+
+  <!-- Google Fonts Setup -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-canvas: #eceae6;
+      --bg-editorial-paper: #FAF6EB;
+      --color-black: #080808;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: #222;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+
+.section-divider {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color-gold);
+  margin: 1.5rem 0;
+}
+
+
+
+
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem; 
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-start; 
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain; 
+    }
+
+    /* ==========================================================================
+       UNIVERSAL EDITORIAL HEADER
+       ========================================================================== */
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #000000;
+    }
+
+    .meta-col { flex: 1; }
+    .meta-center { text-align: center; letter-spacing: 0.22em; }
+    .meta-right { text-align: right; }
+
+    /* ==========================================================================
+       DYNAMIC CONTENT SECTION (SAND COLOURED READING PANE)
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 3.5rem 4rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* --- CUSTOM CSS FOR ABOUT SECTION CONTENT --- */
+    .article-host h1, .article-host h2 {
+      font-family: var(--font-display);
+      color: #111;
+    }
+
+    .article-host h1 {
+      font-size: 2.6rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .article-host h2 {
+      font-size: 1.8rem;
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 0.5rem;
+    }
+
+
+
+    .article-host p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #333;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-tagline {
+      text-align: center;
+      font-family: var(--font-meta);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 2rem;
+    }
+
+    .about-quote {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      padding: 1.5rem;
+      border-top: 1px solid var(--color-gold);
+      border-bottom: 1px solid var(--color-gold);
+    }
+
+    /* Grid for Mission Cards */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+.mission-card {
+  background: #080808;
+  color: #ffffff;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+
+
+   .mission-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: #c59b27; 
+}
+
+
+    .mission-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      color: #ffffff; 
+    }
+
+
+    /* Belief List */
+    .belief-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .belief-list li {
+      font-size: 1.1rem;
+      line-height: 2;
+      color: #333;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Flows and Timelines */
+    .process-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-meta);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      margin: 2rem 0;
+    }
+    
+    .arrow-down {
+      color: var(--color-gold);
+      font-size: 1.2rem;
+    }
+
+    /* ==========================================================================
+       EDITORIAL FOOTER
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: normal;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #f5f5f5;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1.5px;
+      background-color: var(--color-gold);
+      margin: 1.2rem auto;
+      opacity: 0.85;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d1d1d1;
+    }
+
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Clickable Next Page / TOC Trigger */
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+
+/* Custom rule for the Philosophy Section only */
+.philosophy-section {
+  text-align: center;
+}
+
+.philosophy-section h2 {
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+
+
+
+
+
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .editorial-header { padding: 1.2rem 1.2rem 0.5rem; }
+      .meta-bar { font-size: 0.7rem; letter-spacing: 0.08em; }
+      .editorial-stage { padding: 1rem 1.2rem 2rem; }
+      .article-host { padding: 2rem 1.5rem; }
+      .article-host h1 { font-size: 2rem; }
+      .editorial-footer { padding: 2.2rem 1.2rem 6.5rem; } /* Extra space to stack button and copyright on mobile */
+      .footer-quote { font-size: 1.05rem; }
+      
+      .nav-issue-btn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.2rem;
+      }
+      .nav-issue-btn:hover {
+        transform: translateX(50%) translateY(-2px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main class="magazine-page">
+
+    <!-- HEADER LOGO -->
+    <div class="brand-logo-wrapper">
+      <img src="home-images/main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+    </div>
+
+    <!-- META BAR -->
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">VOL — 02</div>
+        <div class="meta-col meta-center">ABOUT US</div>
+        <div class="meta-col meta-right">AUG 2026</div>
+      </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <section class="editorial-stage">
+      
+      <!-- SAND COLOURED READING PANE -->
+      <article class="article-host">
+        
+        <!-- SECTION 1: HERO / INTRO -->
+        <header class="about-hero">
+          <h1>About The Green Blueprint</h1>
+          <p class="about-tagline">Learning from Nature. Building for the Future.</p>
+          
+<div class="about-quote">
+  <p>Every Great Discovery Begins with Observation.</p>
+  
+  <div class="section-divider">❦</div>
+  
+  <p>"We are not trying to reinvent nature. We are simply learning to understand it."</p>
+</div>
+
+
+        </header>
+
+        <!-- SECTION 2: OUR PURPOSE -->
+        <section class="about-section">
+          <h2>Our Purpose</h2>
+          <p>Nature has spent billions of years refining solutions to survival, adaptation, resilience and sustainability. The Green Blueprint exists to observe these timeless lessons, understand their principles, and translate them into practical knowledge for humanity.</p>
+          <p>Our work is not merely about protecting nature. It is about learning from nature.</p>
+        </section>
+
+        <!-- SECTION 3: OUR VISION -->
+        <section class="about-section">
+
+          <h2>Our Vision</h2>
+		<p>To build a civilisation that learns from Nature rather than merely living beside it.</p>
+
+		<p>We envision a future where development is measured not only by what humanity produces, consumes or builds, but by what it can preserve, regenerate, adapt and pass 			   forward.
+   		   A future where technology works with natural systems.</p>
+
+		<p>Where climate action is not limited to reducing emissions, but also strengthens the systems that make life possible.
+   		   Where water, soil, forests, oceans, biodiversity, energy and human development are understood as connected parts of one living system.</p>
+
+
+		<p><strong><em>And where progress is judged by a deeper measure:
+   		   Can what we build continue beyond us?</em></strong></p>
+
+        </section>
+
+        <!-- SECTION 4: OUR MISSION -->
+        <section class="about-section">
+          <h2>Our Mission</h2>
+          <div class="mission-grid">
+            <div class="mission-card">
+              <span style="font-size: 2rem;">🌿</span>
+              <h3>Observe Nature</h3>
+              <p>Every discovery begins with observation.</p>
+            </div>
+            <div class="mission-card">
+              <span style="font-size: 2rem;">🔍</span>
+              <h3>Decode Nature</h3>
+              <p>Understand the hidden principles behind natural systems.</p>
+            </div>
+            <div class="mission-card">
+              <span style="font-size: 2rem;">📚</span>
+              <h3>Share Knowledge</h3>
+              <p>Transform observations into accessible knowledge.</p>
+            </div>
+            <div class="mission-card">
+              <span style="font-size: 2rem;">💡</span>
+              <h3>Inspire Innovation</h3>
+              <p>Encourage solutions inspired by nature.</p>
+            </div>
+            <div class="mission-card">
+              <span style="font-size: 2rem;">🌍</span>
+              <h3>Build for Future</h3>
+              <p>Create resources for future generations.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: WHAT WE BELIEVE -->
+        <section class="about-section">
+          <h2>What We Believe</h2>
+          <ul class="belief-list">
+            <li>🌿 Nature is the greatest engineer.</li>
+            <li>💧 Every resource has value.</li>
+            <li>♻ Conservation comes before sustainability.</li>
+            <li>🔬 Observation comes before innovation.</li>
+            <li>📖 Knowledge grows when shared.</li>
+            <li>🌎 Every generation should leave a better planet.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 6: KNOWLEDGE LIBRARY FLOW -->
+        <section class="about-section">
+          <h2>Our Knowledge Library</h2>
+          <div class="process-flow">
+            <span>Articles</span>
+            <span class="arrow-down">↓</span>
+            <span>Magazines</span>
+            <span class="arrow-down">↓</span>
+            <span>Books</span>
+            <span class="arrow-down">↓</span>
+            <span>Gallery</span>
+            <span class="arrow-down">↓</span>
+            <span>Weekly Highlights</span>
+            <span class="arrow-down">↓</span>
+            <span>Research Notes</span>
+          </div>
+        </section>
+
+        <!-- SECTION 7: OUR JOURNEY TIMELINE -->
+        <section class="about-section">
+          <h2>Our Journey</h2>
+          <div class="process-flow">
+            <span>2026</span>
+            <span class="arrow-down">↓</span>
+            <span>The Green Blueprint</span>
+            <span class="arrow-down">↓</span>
+            <span>Ocean Warming</span>
+            <span class="arrow-down">↓</span>
+            <span>Water Constitution</span>
+            <span class="arrow-down">↓</span>
+            <span>Nature Kural</span>
+            <span class="arrow-down">↓</span>
+            <span>Future Discoveries...</span>
+          </div>
+        </section>
+
+        <!-- SECTION 8: CLOSING MESSAGE -->
+        <section class="about-section">
+          <h2 style="text-align: center; border: none; margin-top: 4rem;">We Are Students of Nature</h2>
+          <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+            We are not trying to reinvent nature. We are simply learning to understand it. Every observation, every article, every magazine, every book, and every photograph is one small step towards building a more thoughtful relationship between humanity and the natural world.
+          </p>
+        </section>
+
+
+        <!-- SECTION 9: THE LEGACY QUESTION -->
+        <section class="about-section">
+
+          <h2>THE LEGACY QUESTION</h2>
+		<p>Every generation inherits a world it did not create.
+   		   Every generation leaves behind a world it will not see again.</p>
+
+		<p>The real measure of progress may therefore not be:</p>
+
+		<p>How much did we build?
+   		   <p>but:</p>
+      		   What remained capable of continuing after we were gone?</p>
+
+		<p>That is the question at the heart of
+   		   BEYOND SUSTAINABILITY — THE CONTINUITY</p>
+
+		<p><strong>Observe Nature.</strong></p>
+   		<p><strong>Decode its wisdom.</strong></p>
+  		 <p><strong>Design for resilience.</strong></p>
+  		 <p><strong>Protect what sustains life.</strong></p>
+  		 <p><strong>Build what can continue.</strong></p>
+
+        </section>
+
+
+
+        <!-- SECTION 10: Our Simplest Philosophy -->
+		<section class="about-section philosophy-section">
+          		<h2>OUR PHILOSOPHY</h2>
+			<p><strong>MOST OBSERVE NATURE.</strong></p>
+		 	<p><strong>WE DECODE IT.</strong></p>
+
+        	</section>
+
+
+
+
+      </article>
+      <!-- END SAND COLOURED READING PANE -->
+      
+    </section>
+  </main>
+
+  <!-- MAGAZINE FOOTER -->
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      Growth doesn't always follow the blueprint; Sometimes, it rewrites it mid-stride
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span class="sep">|</span> 2026 <span class="sep">|</span> THE GREEN BLUEPRINT <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <!-- RESTORED INSIDE THIS ISSUE BUTTON -->
+    <a href="index.html" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>
