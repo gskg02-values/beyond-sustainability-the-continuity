@@ -850,3 +850,39 @@ h1, h2, h3 {
     color: #c5a059; /* Shifts to rustic gold on hover */
     border-bottom: 1px solid #c5a059;
 }
+
+
+/* ==========================================================================
+   SIDEBAR ACCORDION DRAWERS
+   ========================================================================== */
+.book-drawer {
+    margin-bottom: 0.5rem;
+}
+
+.drawer-title {
+    font-size: 1.05rem;
+    color: #c5a059; /* Rustic gold */
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    list-style: none; /* Removes the default black triangle */
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2); /* Subtle divider */
+    transition: color 0.3s ease;
+}
+
+/* Removes the default triangle in Safari/Chrome */
+.drawer-title::-webkit-details-marker {
+    display: none;
+}
+
+.drawer-title:hover {
+    color: #1b4332; /* Shifts to deep green when hovered */
+}
+
+/* Indents the books slightly so they clearly belong inside the folder */
+.drawer-list {
+    padding-left: 1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1.5rem;
+    border-left: 1px solid rgba(27, 67, 50, 0.2); /* A faint vertical line to show depth */
+}
