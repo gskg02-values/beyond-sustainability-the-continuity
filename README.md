@@ -1,7 +1,7 @@
 # ABOUT THE MAGAZINE
 
 ## BEYOND SUSTAINABILITY — THE CONTINUITY
-A Non-Profitable Work,Effort to Understand Nature & Reflect.
+A Non-Profitable Work, Effort to Understand Nature & Reflect.
 
 ### Why does this magazine exist?
 
