@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magazine Facts Section</title>
+<style>
+  /* Import Magazine-Style Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap');
+
+  :root {
+    --bg-color: #f8f5f2;
+    --text-main: #2c2c2c;
+    --accent-green: #2e5c3e;
+    --accent-gold: #c5a059;
+    --accent-dark: #1a1a1a;
+    --card-bg: #ffffff;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    /* Removed padding here so the footer can stretch edge-to-edge */
+    line-height: 1.6;
+
+    position: relative; 
+    min-height: 100vh; 
+
+  }
+
+  .magazine-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem; /* Padding moved here */
+  }
+
+  /* --- NEW: Header Metadata Bar --- */
+  .magazine-header {
+    margin-bottom: 4rem;
+  }
+  
+  .thick-border {
+    height: 14px;
+    background-color: var(--accent-dark);
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+.meta-bar {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat', Helvetica, sans-serif; /* Standardized font family */
+    font-size: 0.85rem;                               /* Standardized font size */
+    font-weight: 600;                                 /* Standardized weight */
+    color: #5d6e7a;                                  /* Standardized color */
+    letter-spacing: 1.5px;                            /* Standardized letter spacing */
+    text-transform: uppercase;                        /* Standardized casing */
+  }
+
+
+
+
+  /* Section Headers */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--accent-dark);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    margin: 1rem auto 0;
+  }
+
+  /* Grid Layout for Facts */
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  /* Fact Cards */
+  .fact-card {
+    background-color: var(--card-bg);
+    border-top: 4px solid var(--accent-green);
+    padding: 2rem;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Weather & Earth variant */
+  .fact-card.weather {
+    border-top-color: var(--accent-gold);
+  }
+
+  .fact-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .fact-text {
+    font-size: 1.05rem;
+    color: #555;
+    font-weight: 300;
+  }
+
+  .fact-text strong {
+    font-weight: 600;
+    color: var(--accent-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Special Feature Layout for Forests */
+  .feature-section {
+    background: var(--accent-dark);
+    color: #fff;
+    padding: 4rem 3rem;
+    border-radius: 16px;
+    margin-top: 2rem;
+  }
+
+  .feature-section .section-title {
+    color: #fff;
+  }
+
+  .feature-section .section-title::after {
+    background-color: var(--accent-green);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .feature-list li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-green);
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .feature-list li strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #e2e2e2;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* --- NEW: Footer Section --- */
+  .magazine-footer {
+    background-color: #121212; 
+    color: #f8f5f2;
+    text-align: center;
+    padding: 5rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    max-width: 750px;
+    margin: 0 auto 2.5rem auto;
+    color: #d1d1d1;
+    line-height: 1.8;
+  }
+
+  .footer-divider {
+    height: 1px;
+    width: 250px;
+    background-color: #333;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  .footer-subtitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .feature-list {
+      grid-template-columns: 1fr;
+    }
+    .section-title {
+      font-size: 2.2rem;
+    }
+    .meta-bar {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+    }
+  }
+
+
+
+/* --- Floating "Inside This Issue" Tab Styles --- */
+.toc-tab {
+    position: absolute;
+    bottom: 40px; /* Positions tab ~1 inch above bottom */
+    right: 30px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.toc-tab:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toc-tab:active {
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="magazine-container">
+
+  <header class="magazine-header">
+    <div class="thick-border"></div>
+    <div class="meta-bar">
+      <span class="meta-left">ISSUE:01 &mdash; CREATIVE SECTION</span>
+      <span class="meta-center">MONTHLY CURATED </span>
+      <span class="meta-right">AUG 2026</span>
+    </div>
+  </header>
+
+  <h2 class="section-title">Did You Know?</h2>
+  
+  <div class="facts-grid">
+    <div class="fact-card">
+      <span class="fact-icon">🌳</span>
+      <p class="fact-text"><strong>Trees Talk</strong> to each other through underground fungal networks.</p>
+    </div>
+    
+    <div class="fact-card">
+      <span class="fact-icon">🎋</span>
+      <p class="fact-text"><strong>Bamboo Plants</strong> can grow up to 91 centimeters in a single day.</p>
+    </div>
+
+    <div class="fact-card">
+      <span class="fact-icon">🍌</span>
+      <p class="fact-text"><strong>Banana Plants</strong> are actually giant herbs, not true trees.</p>
+    </div>
+
+    <div class="fact-card">
+      <span class="fact-icon">🌲</span>
+      <p class="fact-text"><strong>The Amazon Rainforest</strong> produces roughly 6% of Earth's oxygen.</p>
+    </div>
+    
+    <div class="fact-card weather">
+      <span class="fact-icon">⚡</span>
+      <p class="fact-text"><strong>Lightning Strikes</strong> the Earth about 100 times every single second.</p>
+    </div>
+
+    <div class="fact-card weather">
+      <span class="fact-icon">🌋</span>
+      <p class="fact-text"><strong>Volcanic Rocks</strong> called pumice are the only stones that can float.</p>
+    </div>
+
+    <div class="fact-card weather">
+      <span class="fact-icon">🌧️</span>
+      <p class="fact-text"><strong>Raindrops</strong> are shaped like hamburger buns, not teardrops.</p>
+    </div>
+
+    <div class="fact-card weather">
+      <span class="fact-icon">🪙</span>
+      <p class="fact-text"><strong>Earthquakes</strong> can permanently turn water into precious gold.</p>
+    </div>
+  </div>
+
+  <div class="feature-section">
+    <h2 class="section-title">Fun Facts: Forests</h2>
+    <ul class="feature-list">
+      <li>
+        <span>🌲</span>
+        <strong>Forests can make their own rain.</strong> 
+        Trees release water vapor that helps form clouds and rainfall.
+      </li>
+      <li>
+        <span>🍄</span>
+        <strong>The largest living organism on Earth is a fungus.</strong> 
+        Growing beneath a forest, it covers several square kilometers.
+      </li>
+      <li>
+        <span>🕸️</span>
+        <strong>Trees share nutrients underground.</strong> 
+        They use fungal networks often called the "Wood Wide Web."
+      </li>
+      <li>
+        <span>🔥</span>
+        <strong>Some pine cones open only after a forest fire.</strong> 
+        Fire helps the next generation of trees begin growing.
+      </li>
+      <li>
+        <span>🌱</span>
+        <strong>A teaspoon of healthy forest soil contains billions of microorganisms,</strong> 
+        many still unknown to science.
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<footer class="magazine-footer">
+  <p class="footer-quote">"The greatest resource is not hidden beneath the ocean. It is hidden in the way we choose to see it."</p>
+  <div class="footer-divider"></div>
+  <p class="footer-subtitle">BEYOND SUSTAINABILITY &mdash; THE CONTINUITY</p>
+</footer>
+
+<a href="nature-engg.html" class="toc-tab">Inside This Issue</a>
+
+
+</body>
+</html>
