@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>At A Glance - Tamil Nadu Domestic Water Security</title>
+    <style>
+        /* Base Styles & Warm Palette */
+        :root {
+            --primary-color: #5A4A3A;       /* Deep warm brown */
+            --secondary-color: #C07F5A;     /* Warm terracotta */
+            --accent-color: #E6D5B8;        /* Soft sand/cream */
+            --bg-color: #F9F6F0;            /* Warm off-white */
+            --text-main: #3D332A;           /* Dark sepia */
+            --text-muted: #7A6958;          /* Muted brown */
+            --topbar-bg: #EFEADD;           /* Soft beige */
+            --footer-bg: #2C2621;           /* Very dark warm brown */
+            --card-bg: #FFFFFF;
+            --success-color: #6C8E68;       /* Soft green */
+            --danger-color: #A85751;        /* Muted red */
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            position: relative; 
+            min-height: 100vh; 
+        }
+
+        /* Top Metadata Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--topbar-bg);
+            padding: 1.2rem 3rem;
+            border-top: 12px solid var(--primary-color);
+            border-bottom: 1px solid #D5CEBE;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 1rem;
+            }
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h4 {
+            color: var(--secondary-color);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin: 0 0 1rem 0;
+            line-height: 1.1;
+            font-family: 'Georgia', serif;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* Flow Cards for Metrics */
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .flow-card {
+            background: var(--card-bg);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(90, 74, 58, 0.05);
+            border-top: 4px solid var(--secondary-color);
+        }
+        
+        .flow-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .flow-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 0 0 1rem 0;
+            line-height: 1.3;
+        }
+
+        .flow-card .step {
+            display: block;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-card .arrow {
+            display: block;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        .flow-card .highlight {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Insight Section (Gradient Box) */
+        .insight-section {
+            background: linear-gradient(135deg, #DFD3C3 0%, #EFEADD 100%);
+            padding: 4rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 4rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .insight-section h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .insight-section p {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+        }
+        
+        .insight-section.dark {
+            background: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .insight-section.dark h3 {
+            color: var(--accent-color);
+        }
+        .insight-section.dark p {
+            color: #FFFFFF;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 5rem 0 2.5rem;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Tables */
+        .data-table-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(90, 74, 58, 0.06);
+            overflow: hidden;
+            margin-bottom: 4rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            padding: 1.5rem 2rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid var(--accent-color);
+            font-size: 1.05rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(230, 213, 184, 0.2);
+        }
+
+        tr:hover {
+            background-color: rgba(192, 127, 90, 0.08);
+        }
+
+        td:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 50%;
+        }
+
+        td:last-child {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        /* Dashboards & Checklists */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(90, 74, 58, 0.06);
+            border-top: 6px solid var(--secondary-color);
+        }
+        
+        .dashboard-card.success {
+            border-top-color: var(--success-color);
+        }
+        .dashboard-card.danger {
+            border-top-color: var(--danger-color);
+        }
+
+        .dashboard-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        .dashboard-card.success .check-list li::before { color: var(--success-color); content: '✅'; font-size: 1.1rem; top: 2px; }
+        .dashboard-card.danger .check-list li::before { color: var(--danger-color); content: '❌'; font-size: 1.1rem; top: 2px; }
+
+        /* Equation Blocks */
+        .equation-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .equation-title {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .equation-box {
+            background: var(--primary-color);
+            color: #FFFFFF;
+            padding: 3.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(90,74,58,0.2);
+            font-family: 'Georgia', serif;
+        }
+        
+        .equation-box.alt {
+            background: var(--card-bg);
+            color: var(--primary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .equation-element {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .equation-box.alt .equation-element {
+            background: rgba(192,127,90,0.1);
+            border: 1px solid rgba(192,127,90,0.3);
+        }
+
+        .equation-operator {
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+
+        .equation-result {
+            margin-top: 1.5rem;
+            font-size: 2rem;
+            color: var(--accent-color);
+            padding-top: 1.5rem;
+            border-top: 1px dashed rgba(255,255,255,0.3);
+        }
+        
+        .equation-box.alt .equation-result {
+            color: var(--primary-color);
+            border-top: 1px dashed var(--secondary-color);
+        }
+
+        .equation-result span {
+            display: block;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: normal;
+            margin-top: 0.5rem;
+            color: #D5CEBE;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .equation-box.alt .equation-result span { color: var(--text-muted); }
+
+        /* Key Message / Callout */
+        .key-message {
+            background: var(--card-bg);
+            border: 2px solid var(--secondary-color);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+        }
+
+        .key-message h3 {
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .key-message p.lead {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .text-columns {
+            column-count: 2;
+            column-gap: 3rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .text-columns { column-count: 1; }
+        }
+
+        /* Footer */
+        .full-footer {
+            background-color: var(--footer-bg);
+            color: #F9F6F0;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .footer-quote {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: #D5CEBE;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-line {
+            width: 300px;
+            height: 1px;
+            background-color: #5A4A3A;
+            margin: 0 auto 2.5rem;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        /* Floating Tab */
+        .toc-tab {
+            position: absolute;
+            bottom: 40px; 
+            right: 30px;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            padding: 12px 20px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(192, 127, 90, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .toc-tab:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(90, 74, 58, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div>ISSUE: 01</div>
+        <div>MONTHLY CURATED SECTION</div>
+        <div>AUG 2026</div>
+    </header>
+
+    <main class="container">
+        
+        <div class="hero">
+            <h4>At A Glance</h4>
+            <h1>Tamil Nadu Domestic Water Security</h1>
+            <h2>From Water Deficit to Water Security</h2>
+        </div>
+
+        <div class="flow-grid">
+            <div class="flow-card">
+                <span class="icon">👥</span>
+                <h3>Population (Planning Basis)</h3>
+                <span class="highlight">80 Million People</span>
+            </div>
+            
+            <div class="flow-card">
+                <span class="icon">🚿</span>
+                <h3>Domestic Water Requirement</h3>
+                <span class="step">135 Litres / Person / Day</span>
+                <span class="step" style="font-size:0.85em; color:var(--text-muted);">(CPHEEO Planning Norm)</span>
+                <span class="arrow">↓</span>
+                <span class="step">10,800 MLD</span>
+                <span class="arrow">↓</span>
+                <span class="step">3,942 GL / Year</span>
+                <span class="arrow">↓</span>
+                <span class="highlight">≈139 TMC / Year</span>
+            </div>
+
+            <div class="flow-card">
+                <span class="icon">🌊</span>
+                <h3>Renewable Coastal Water Infrastructure</h3>
+                <span class="step">Integrated Coastal Water Security Centres</span>
+                <span class="step">100 MLD Each</span>
+                <span class="arrow">↓</span>
+                <span class="highlight">108 Centres</span>
+                <span class="step" style="font-size:0.85em; margin-top:10px;">Strategically distributed across Tamil Nadu's 1,076 km coastline</span>
+            </div>
+
+            <div class="flow-card">
+                <span class="icon">🌬</span>
+                <h3>Renewable Energy Requirement</h3>
+                <span class="step">3 Offshore Wind Turbines</span>
+                <span class="step" style="font-size:0.85em; color:var(--text-muted);">(15 MW each) for every 100 MLD Centre</span>
+                <span class="arrow">↓</span>
+                <span class="step">324 Offshore Wind Turbines</span>
+                <span class="arrow">↓</span>
+                <span class="step">4.86 GW Installed Capacity</span>
+                <span class="arrow">↓</span>
+                <span class="highlight">≈15.77 TWh / Year</span>
+            </div>
+
+            <div class="flow-card">
+                <span class="icon">💧</span>
+                <h3>Domestic Water Produced</h3>
+                <span class="highlight">10,800 MLD</span>
+                <span class="arrow">=</span>
+                <span class="step">Entire Illustrative Domestic Water Planning Requirement</span>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h3>♻ Circular Economy</h3>
+                <p>Every Integrated Coastal Water Security Centre is envisioned as a <strong>Circular Resource Recovery Hub</strong>, designed around <strong>Zero Liquid Discharge</strong> (where technically and economically feasible) principles, with opportunities for:</p>
+                <ul class="check-list">
+                    <li>Freshwater Production</li>
+                    <li>Industrial Salt Recovery</li>
+                    <li>Mineral Recovery (where feasible)</li>
+                    <li>Process Water Reuse</li>
+                    <li>Future Hydrogen Integration</li>
+                    <li>Low-grade Heat Utilisation (where practical)</li>
+                </ul>
+            </div>
+
+            <div class="dashboard-card success">
+                <h3 style="color: var(--success-color);">🌱 Long-Term Sustainability</h3>
+                <p>Illustrative statewide renewable-powered operation could contribute to:</p>
+                <ul class="check-list">
+                    <li>Reduced dependence on coal-based electricity</li>
+                    <li>Lower greenhouse gas emissions</li>
+                    <li>Reduced pressure on groundwater</li>
+                    <li>Cleaner air through reduced fossil-fuel use</li>
+                    <li>Improved drought resilience</li>
+                    <li>Strengthened long-term water security</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insight-section">
+            <h3>Why existing desalination facilities not enough?</h3>
+            <p>Because it was designed primarily to <strong>augment some region's water supply</strong>, not enough to meet the domestic water needs of the entire state.</p>
+            <p>The opportunity is not simply to build more capacity. The opportunity is to <strong>distribute capacity intelligently</strong>.</p>
+        </div>
+        
+        <div class="key-message">
+            <h3>Our Perspective</h3>
+            <p class="lead" style="font-size:1.4rem; color:var(--text-muted);">Instead of asking: "How do we build a bigger desalination plant?"</p>
+            <p class="lead">We asked: "How do we build a resilient water network that benefits every region, every people?"</p>
+            <p style="font-size:1.1rem; margin-top: 1rem;">That single change in perspective led to a different solution.</p>
+        </div>
+
+        <h2 class="section-title">How Our Thought Process Evolved</h2>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-card danger">
+                <h3 style="color: var(--danger-color);">Conventional Thinking</h3>
+                <ul class="check-list">
+                    <li>Build larger desalination plants.</li>
+                    <li>Pump water over longer distances.</li>
+                    <li>Continue increasing pressure on freshwater sources.</li>
+                </ul>
+            </div>
+
+            <div class="dashboard-card success">
+                <h3 style="color: var(--success-color);">Continuity Thinking</h3>
+                <ul class="check-list">
+                    <li>Protect rainwater, rivers, reservoirs and groundwater.</li>
+                    <li>Use renewable-powered desalination as a strategic supplementary source.</li>
+                    <li>Distribute water production along the coastline.</li>
+                    <li>Reduce transmission distances where practical.</li>
+                    <li>Design every centre for resilience, resource recovery and future expansion.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="insight-section dark">
+            <h3>The Big Idea</h3>
+            <p>The proposal is <strong>not</strong> to replace reservoirs, rivers or rainwater harvesting. It is to <strong>give them relief</strong>.</p>
+            <p>By supplying a dependable share of domestic water from the ocean, Tamil Nadu can reserve more naturally available freshwater for Agriculture, Groundwater recharge, Lakes and reservoirs, Wetlands, Environmental flows, and Drought resilience.</p>
+        </div>
+        
+        <div class="key-message">
+            <h3>Our Engineering Perspective</h3>
+            <p style="font-weight: 600; color:var(--text-muted);">Instead of: One Large Metropolitan Water System → Build A Distributed Coastal Water Security Network</p>
+            <p>Strategically locating 100 MLD Integrated Coastal Water Security Centres along Tamil Nadu's coastline can:</p>
+            <div class="text-columns">
+                <ul class="check-list" style="margin-bottom: 0;">
+                    <li>Supply water closer to demand centres.</li>
+                    <li>Reduce long-distance transmission where practical.</li>
+                    <li>Improve regional resilience.</li>
+                    <li>Support phased expansion.</li>
+                    <li>Share infrastructure and economic opportunities across coastal districts.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insight-section">
+            <h3>The Continuity Approach</h3>
+            <p>Nature never depends on a single river. Nature never depends on a single reservoir. Nature builds resilience through <strong>many interconnected systems</strong>.</p>
+            <p>The future of Tamil Nadu's water security may follow the same principle. Protect every lake. Restore every reservoir. Harvest every drop of rain. Recharge every aquifer. Reuse every possible litre of treated water.</p>
+            <p>And let the ocean become a <strong>renewable supplementary source</strong> that strengthens—not replaces—our freshwater resources.</p>
+        </div>
+
+        <h2 class="section-title">In One Minute</h2>
+        
+        <div class="data-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Today's Challenge</th>
+                        <th>Tomorrow's Opportunity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Growing domestic water demand</td>
+                        <td>Distributed coastal water security network</td>
+                    </tr>
+                    <tr>
+                        <td>Seasonal water scarcity</td>
+                        <td>Year-round renewable water production</td>
+                    </tr>
+                    <tr>
+                        <td>Groundwater stress</td>
+                        <td>Groundwater conservation and recharge</td>
+                    </tr>
+                    <tr>
+                        <td>Centralised water infrastructure</td>
+                        <td>Regional Integrated Coastal Water Security Centres</td>
+                    </tr>
+                    <tr>
+                        <td>Fossil-fuel-powered desalination</td>
+                        <td>Offshore wind-powered desalination</td>
+                    </tr>
+                    <tr>
+                        <td>Linear water use</td>
+                        <td>Circular economy with resource recovery</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-card" style="grid-column: 1 / -1;">
+                <h3>A Recap</h3>
+                <ul class="check-list">
+                    <li><strong>The challenge:</strong> 10,800 MLD demand</li>
+                    <li><strong>Why the current approach is insufficient:</strong> Capacity concentrated for some regions rather than statewide</li>
+                    <li><strong>The proposed pathway:</strong> Distributed coastal water security centres</li>
+                    <li><strong>The scale of infrastructure:</strong> 108 centres, 324 offshore turbines</li>
+                    <li><strong>The philosophy:</strong> Protect freshwater, supplement with renewable desalination, and build resilience</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insight-section dark">
+            <h3>The Unsaid</h3>
+            <p>Tamil Nadu's greatest water opportunity may not lie in building the world's largest desalination plant.</p>
+            <p>It may lie in building the world's smartest <strong>distributed coastal water security network</strong> — one that protects freshwater, harnesses renewable energy, recovers valuable resources, and ensures that every region to every individual shares in the benefits.</p>
+            <p style="font-size: 1.4rem; font-style: italic; margin-top:2rem;">"How does this proposal reduce humanity's environmental footprint while ensuring continuity?"</p>
+        </div>
+
+        <h2 class="section-title">🌍 Climate Impact At A Glance</h2>
+        
+        <div class="data-table-container">
+            <div style="padding: 1.5rem 2rem; background: var(--topbar-bg); border-bottom: 2px solid var(--primary-color);">
+                <strong>Beyond Water Security:</strong> Renewable-powered Integrated Coastal Water Security Centres do more than produce freshwater. They transform <strong>water infrastructure into climate infrastructure</strong>. <br>
+                <em style="font-size: 0.9em; color: var(--text-muted);">(Illustrative statewide scenario based on engineering assumptions used in this article)</em>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Impact</th>
+                        <th>Estimated Benefit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>💧 Domestic Water Produced</td><td>3,942 GL/year</td></tr>
+                    <tr><td>⚡ Renewable Electricity Utilised</td><td>15.77 TWh/year</td></tr>
+                    <tr><td>🌬 Offshore Wind Capacity</td><td>4.86 GW</td></tr>
+                    <tr><td>🏭 Coal Consumption Avoided*</td><td>≈7.88 Million Tonnes/year</td></tr>
+                    <tr><td>🌍 CO₂ Emissions Avoided*</td><td>≈14.2 Million Tonnes/year</td></tr>
+                    <tr><td>🌫 SO₂ Emissions</td><td>Significantly Reduced</td></tr>
+                    <tr><td>🌫 NOₓ Emissions</td><td>Significantly Reduced</td></tr>
+                    <tr><td>🪨 Fly Ash Generation</td><td>Significantly Reduced</td></tr>
+                    <tr><td>💧 Groundwater Stress</td><td>Reduced</td></tr>
+                    <tr><td>🚛 Emergency Water Tanker Dependency</td><td>Potentially Reduced</td></tr>
+                    <tr><td>♻ Circular Resource Recovery</td><td>Integrated into every Coastal Water Security Centre</td></tr>
+                </tbody>
+            </table>
+            <div style="padding: 1rem 2rem; font-size: 0.85rem; color: var(--text-muted);">
+                *Illustrative estimates based on the engineering assumptions presented in this research note.
+            </div>
+        </div>
+        
+        <div class="dashboard-card" style="margin-bottom: 5rem;">
+            <h3>🌎 Why This Matters</h3>
+            <p>Producing freshwater is only one outcome. The larger achievement is producing it:</p>
+            <ul class="check-list">
+                <li>Without burning additional coal for desalination electricity.</li>
+                <li>While reducing greenhouse gas emissions.</li>
+                <li>While protecting groundwater.</li>
+                <li>While enabling circular resource recovery.</li>
+                <li>While strengthening resilience against climate variability.</li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-weight: 600;">The same infrastructure that secures water can also contribute to cleaner energy systems and lower environmental impacts.</p>
+        </div>
+
+        <div class="equation-section">
+            <div class="equation-title">The Continuity Equation</div>
+            <div class="equation-box alt">
+                <div class="equation-row">
+                    <div class="equation-element">Fresh Water</div>
+                    <div class="equation-operator">+</div>
+                    <div class="equation-element">Renewable Energy</div>
+                    <div class="equation-operator">+</div>
+                    <div class="equation-element">Circular Economy</div>
+                </div>
+                <div class="equation-row">
+                    <div class="equation-operator">+</div>
+                    <div class="equation-element">Carbon Reduction</div>
+                    <div class="equation-operator">+</div>
+                    <div class="equation-element">Groundwater Conservation</div>
+                </div>
+                <div class="equation-result">
+                    CONTINUITY
+                </div>
+            </div>
+        </div>
+
+        <div class="equation-section">
+            <div class="equation-title">"At a Glance," a single metric that readers can remember</div>
+            <div class="equation-box">
+                <div style="font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">To sum up, it's:</div>
+                <div class="equation-row">
+                    <div class="equation-element">108 Coastal Water Security Centres</div>
+                    <div class="equation-operator">+</div>
+                    <div class="equation-element">324 Offshore Wind Turbines</div>
+                </div>
+                <div class="equation-row" style="margin-top: 1rem;">
+                    <div class="equation-operator">=</div>
+                </div>
+                <div class="equation-result">
+                    10,800 MLD Domestic Water
+                    <span style="color: #FFFFFF; font-weight: bold; font-size: 1.4rem; margin-top: 1rem;">≈14.2 Million Tonnes CO₂ Avoided Every Year*</span>
+                    <span style="font-size: 0.85rem; margin-top: 1.5rem; text-transform: none;">*(Illustrative engineering scenario based on the assumptions used in this article.)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="key-message">
+            <h3 style="color: var(--primary-color);">Possibility.</h3>
+            <p class="lead" style="margin-bottom: 2rem;">"If this is achievable in phases over the coming decades, why shouldn't we begin today?"</p>
+        </div>
+
+    </main>
+
+    <footer class="full-footer">
+        <div class="footer-quote">
+            "The greatest resource is not hidden beneath the ocean. It is hidden in the way we choose to see it."
+        </div>
+        <div class="footer-line"></div>
+        <div class="footer-brand">
+            BEYOND SUSTAINABILITY — THE CONTINUITY
+        </div>
+    </footer>
+
+    <a href="../articles/article-03.html" class="toc-tab">Inside This Issue</a>
+
+</body>
+</html>
