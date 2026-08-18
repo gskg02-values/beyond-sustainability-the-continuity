@@ -926,3 +926,64 @@ h1, h2, h3 {
         margin-left: 15px;
     }
 }
+
+
+/* ==========================================================================
+   COLLAPSIBLE HERO IMAGE (Floating Arrow)
+   ========================================================================== */
+.hero-drawer {
+    position: relative; /* This acts as the anchor that allows the arrow to float inside */
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero-toggle-btn {
+    display: inline-block;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+}
+
+/* Hides the default browser triangle */
+.hero-toggle-btn::-webkit-details-marker {
+    display: none;
+}
+
+/* --- THE MAGIC: Floating over the image when OPEN --- */
+.hero-drawer[open] .hero-toggle-btn {
+    position: absolute;
+    top: 1.0rem; /* Pushes the arrow down slightly from the top edge */
+    left: 2rem;  /* Pins the button cleanly to the left side */
+    
+    /* Creates the elegant dark glass circle */
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background: rgba(5, 5, 5, 0.3); 
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Icon Base Style */
+.toggle-icon {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #c5a059; /* Rustic gold */
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/* Flips the arrow UP when the drawer is OPEN */
+.hero-drawer[open] .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Hover effect */
+.hero-toggle-btn:hover .toggle-icon {
+    color: #ffffff; /* Brightens to pure white when hovered */
+}
