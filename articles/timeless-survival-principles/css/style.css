@@ -319,3 +319,35 @@ td:last-child {
         transform: translateX(50%) translateY(-2px);
     }
 }
+
+/* Ensure the container is the reference point for our top-left positioning */
+.container {
+    position: relative;
+}
+
+/* Pin the navigation button to the top left of the container */
+.top-nav {
+    position: absolute;
+    top: 120px;  /* Adjust this number to move it up or down */
+    left: 20px; /* Adjust this number to move it left or right */
+    z-index: 10; /* Ensures the button stays clickable and above other elements */
+}
+
+/* Ensure the icon and text align nicely side-by-side */
+
+.top-nav .nav-issue-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: bold; 
+    white-space: nowrap; /* <-- ADD THIS LINE */
+    width: auto;         /* <-- ADD THIS TO ALLOW EXPANSION */
+}
+
+
+/* Ensure the SVG arrow sizes correctly */
+.top-nav .nav-issue-btn svg {
+    width: 20px;
+    height: 20px;
+}
