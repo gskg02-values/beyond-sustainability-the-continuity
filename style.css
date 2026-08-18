@@ -886,3 +886,43 @@ h1, h2, h3 {
     margin-bottom: 1.5rem;
     border-left: 1px solid rgba(27, 67, 50, 0.2); /* A faint vertical line to show depth */
 }
+
+
+/* ==========================================================================
+   MODAL IMAGES (Visual for Thought)
+   ========================================================================== */
+.modal-visual {
+    display: block;
+    max-width: 100%; /* Ensures the image never spills horizontally */
+    max-height: 50vh; /* Prevents the image from taking up the entire vertical screen */
+    width: auto;
+    height: auto;
+    margin: 0 auto; /* Centers the image perfectly */
+    object-fit: contain; /* The magic property: scales the image without ANY cropping */
+    border-radius: 4px; /* A very subtle softening of the sharp corners */
+}
+
+
+/* ==========================================================================
+   MODAL IMAGES (Tea Time Images)
+   ========================================================================== */
+
+
+.concept-image {
+    float: right;           /* Pushes the image to the right side */
+    width: 140px;           /* Controls how wide the image is */
+    height: auto;           /* Keeps the image proportions perfect */
+    margin-top: 15px;       /* Pushes it down away from the close mark */
+    margin-left: 20px;      /* Creates breathing room between the image and your text */
+    margin-bottom: 10px;    /* Keeps text from crowding the bottom */
+    border-radius: 6px;     /* Optional: slightly rounds the corners to soften the look */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Optional: adds a very soft shadow */
+}
+
+/* For mobile devices: prevents the image from getting too cramped */
+@media (max-width: 600px) {
+    .concept-image {
+        width: 100px;
+        margin-left: 15px;
+    }
+}
