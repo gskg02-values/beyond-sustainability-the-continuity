@@ -323,28 +323,8 @@ h1, h2, h3 {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4); 
 }
 
-.latest-magazine-block {
-    background-color: #050505; 
-    padding: 2.5rem 3rem;
-    border-radius: 8px;
-    margin-top: 5rem; 
-    margin-bottom: 2rem; 
-    border-left: 4px solid #c5a059; 
-}
 
-.latest-magazine-block h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-    color: #c5a059; 
-    font-weight: normal;
-}
 
-.latest-magazine-block p {
-    color: #d4c9b3; 
-    font-size: 1.05rem;
-    margin-bottom: 1.5rem;
-}
 
 .btn-secondary {
     display: inline-block;
@@ -986,4 +966,143 @@ h1, h2, h3 {
 /* Hover effect */
 .hero-toggle-btn:hover .toggle-icon {
     color: #ffffff; /* Brightens to pure white when hovered */
+}
+
+
+
+/* ==========================================================================
+   THE THINKING EDGE - IMAGE BANNER
+   ========================================================================== */
+.thinking-edge-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 4rem auto; /* Provides breathing room above and below */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Optional: adds a soft drop shadow */
+}
+
+.thinking-edge-img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes any phantom space below the image */
+}
+
+.explore-link {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 3rem;
+    
+    /* Styling to match our established rustic gold */
+    background-color: #c5a059; 
+    color: #050505; 
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 3px;
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.explore-link:hover {
+    background-color: #dfaf2f; /* Brightens slightly on hover */
+    transform: translateY(-2px);
+}
+
+/* Mobile Adjustment for smaller screens */
+@media (max-width: 768px) {
+    .explore-link {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
+    }
+}
+
+
+
+/* ==========================================================================
+   FEATURED MAGAZINE - TEXT OVERLAY
+   ========================================================================== */
+.featured-magazine-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 4rem auto; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.magazine-banner-img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+
+.magazine-text-overlay {
+    position: absolute;
+    top: 34%;        /* Moved further down into the light green area */
+    right: 19%;      /* Aligned precisely with the green rectangle */
+    width: 27%;      /* Provides enough room for text without crowding */
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.magazine-title {
+    font-family: 'Georgia', serif; 
+    font-size: 2.2rem;
+    color: #050505; 
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+}
+
+.magazine-notes {
+    font-size: 1.05rem;
+    color: #1b4332; 
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.read-more-link {
+    background-color: transparent; 
+    color: #050505; 
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid #050505;
+    padding-bottom: 0.2rem;
+    transition: all 0.3s ease;
+    align-self: flex-end; 
+}
+
+.read-more-link:hover {
+    color: #ffffff; 
+    border-bottom-color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .magazine-text-overlay {
+        width: 32%;
+        right: 16%;
+        top: 30%;
+    }
+    .magazine-title { font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .magazine-notes { font-size: 0.9rem; margin-bottom: 1.2rem; }
+}
+
+@media (max-width: 768px) {
+    .magazine-text-overlay {
+        width: 38%;
+        right: 12%;
+        top: 25%;
+    }
+    .magazine-title { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .magazine-notes { font-size: 0.75rem; line-height: 1.4; margin-bottom: 0.8rem; }
+    .read-more-link { font-size: 0.65rem; }
 }
