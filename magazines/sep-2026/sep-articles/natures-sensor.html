@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Magazine Template</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-canvas: #080808;
+      --bg-editorial-paper: #FAF6EB;
+      --color-black: #080808;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: #222;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL (Centered Content Wrapper)
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       0. BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem;   /* Values are: Top | Right | Bottom | Left */
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-start; /* Aligns it strictly to the left */
+    }
+
+    .brand-logo {
+      /* This is the master control for your logo size */
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain; /* Ensures the image fits perfectly without ever stretching */
+    }
+
+    /* ==========================================================================
+       1. UNIVERSAL EDITORIAL HEADER
+       ========================================================================== */
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #000000;
+    }
+
+    .meta-col {
+      flex: 1;
+    }
+
+    .meta-center {
+      text-align: center;
+      letter-spacing: 0.22em;
+    }
+
+    .meta-right {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       2. DYNAMIC CONTENT SECTION (YELLOW / IVORY PADDING)
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 3.5rem 4rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Starter typography for inserted articles */
+    .article-host h1 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: #111;
+      text-align: center; /* <-- ADD THIS LINE TO CENTER THE HEADING */
+
+    }
+    
+    .article-host h2 {
+      font-family: var(--font-meta);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      color: #333;
+      text-align: center; /* <-- ADD THIS LINE TO CENTER THE HEADING */
+
+      text-transform: uppercase;
+    }
+    
+    .article-host h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .article-host p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #333;
+      margin-bottom: 1.4rem;
+    }
+    
+    .article-host ul {
+      margin-bottom: 1.4rem;
+      padding-left: 2rem;
+      color: #333;
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    /* ==========================================================================
+       3. EDITORIAL FOOTER (Full Screen Width)
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: normal;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #f5f5f5;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1.5px;
+      background-color: var(--color-gold);
+      margin: 1.2rem auto;
+      opacity: 0.85;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d1d1d1;
+    }
+
+    /* Centered Copyright */
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Clickable Next Page / TOC Trigger */
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .editorial-header {
+        padding: 1.2rem 1.2rem 0.5rem;
+      }
+      .meta-bar {
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+      }
+      .editorial-stage {
+        padding: 1rem 1.2rem 2rem;
+      }
+      .article-host {
+        padding: 2rem 1.5rem;
+      }
+      .editorial-footer {
+        padding: 2.2rem 1.2rem 6.5rem; /* Extra space to stack button and copyright on mobile */
+      }
+      .footer-quote {
+        font-size: 1.05rem;
+      }
+      
+      .nav-issue-btn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.2rem;
+      }
+      .nav-issue-btn:hover {
+        transform: translateX(50%) translateY(-2px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main class="magazine-page">
+
+    <div class="brand-logo-wrapper">
+      <img src="main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+    </div>
+
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">ISSUE — 02</div>
+        <div class="meta-col meta-center">MONTHLY EDITION</div>
+        <div class="meta-col meta-right">SEP 2026</div>
+      </div>
+    </header>
+
+    <section class="editorial-stage">
+      <article class="article-host">
+        <h1>THE WORLD'S MOST ADVANCED SENSORS HAVE NO BATTERIES</h1>
+        <h2>How Nature Senses, Responds and Adapts Without Electronics</h2>
+        
+        <p>This article's central question is, Why are we building electronic sensors to imitate intelligence that already exists without electricity, batteries or software?</p>
+        
+        <h3>The deeper philosophy</h3>
+        <p>Nature's design is intrinsic. Its function is embedded in form, structure, material and relationship.</p>
+        <p>Human design is often additive. We create a separate device, then add power, sensors, software, infrastructure and maintenance to make it perform.</p>
+        <p>So perhaps the real lesson isn't merely “Nature has better sensors.”<br>
+        It is:<br>
+        Nature does not add intelligence to form. Nature builds intelligence into form.</p>
+        <p>And then the core philosophy becomes beautifully simple:<br>
+        LEARN FROM THE PLANET. SAVE THE PLANET. CONSUME LESS. INTERACT MORE.</p>
+        
+        <h3>THE PLANET IS OUR 4.8-BILLION-YEAR TEACHER.</h3>
+        <p>Not a resource warehouse. Not merely a place to protect. Not an obstacle to overcome.<br>
+        A teacher.</p>
+        <p>Every leaf is a lesson. Every root is an experiment. Every ecosystem is a working model. Every species is a surviving design. Every geological layer is a page in the longest experiment we know.<br>
+        And humanity is the newest student.</p>
+        <p>That gives Beyond Sustainability — The Continuity a very distinctive intellectual position:<br>
+        We don't merely ask how to save nature. We ask what nature can teach us about saving ourselves.</p>
+        <p>And “Consume Less. Interact More.” is almost a perfect bridge between sustainability and continuity. It says sustainability isn't just about reducing consumption—it is about restoring our relationship with the systems that sustain us.</p>
+        <p>Though we perceive “Nature is amazing”, the unspoken Nature makes us to think:</p>
+        
+        <h3>WHAT ARE WE TRYING TO REINVENT?</h3>
+        <p>Modern engineering is developing:</p>
+        <ul>
+          <li>smart materials</li>
+          <li>flexible sensors</li>
+          <li>environmental sensors</li>
+          <li>structural sensors</li>
+          <li>autonomous monitoring systems</li>
+          <li>low-power and battery-free sensing technologies</li>
+        </ul>
+        
+        <p>And nature has been doing versions of these things through material properties, geometry, chemistry and biological feedback.</p>
+        <p>That gives us our sustainability connection:<br>
+        The future sensor may not always need more electronics. Perhaps it sometimes needs better materials.</p>
+        
+        <h3>NATURE'S DESIGN PRINCIPLE</h3>
+        <p>Don't always add a sensor to the system. Sometimes make the system itself capable of sensing.</p>
+        <p>Another beautiful connection here is this article introduces “Nature's Intelligence” without claiming that nature thinks like a human. That distinguishes sensing, response and adaptation from human intelligence. This makes the Nature scientifically stronger.</p>
+        
+        <p>Read more to explore most exciting insights ------&gt;</p>
+
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      Growth doesn't always follow the blueprint; Sometimes, it rewrites it mid-stride
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span class="sep">|</span> 2026 <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <a href="#next-page" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>

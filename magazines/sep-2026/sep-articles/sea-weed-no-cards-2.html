@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Magazine Template - Seaweed in Numbers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES (DARK THEME)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #050505;
+      --bg-editorial-paper: #0f0f0f;
+      --color-black: #000000;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --text-main: #d1d1d1;
+      --text-heading: #f5f5f5;
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL 
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: var(--color-black);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       0. BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 2.5rem;   
+      background-color: var(--color-black);
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain;
+      filter: invert(1);
+    }
+
+    /* ==========================================================================
+       1. UNIVERSAL EDITORIAL HEADER
+       ========================================================================== */
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: var(--color-black);
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #999;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #222;
+    }
+
+    .meta-col {
+      flex: 1;
+    }
+
+    .meta-center {
+      text-align: center;
+      letter-spacing: 0.22em;
+    }
+
+    .meta-right {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       2. DYNAMIC CONTENT SECTION (DARK PADDING)
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+      background: var(--color-black);
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 4.5rem 4rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Typography */
+    .article-host h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      color: var(--color-gold);
+      text-align: center;
+    }
+    
+    .article-host .subtitle {
+      font-family: var(--font-meta);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      text-align: center;
+      color: #888;
+      margin-bottom: 4rem;
+    }
+
+    /* ==========================================================================
+       3. STRIKING MODERN NUMBERS LAYOUT
+       ========================================================================== */
+    .category-section {
+      margin-bottom: 4rem;
+    }
+
+    .category-header {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--text-heading);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .category-header span {
+      color: var(--color-gold);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .category-header::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--color-gold) 0%, transparent 100%);
+      opacity: 0.3;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .stat-card {
+      background: #161616;
+      padding: 2.5rem;
+      border-top: 3px solid var(--color-gold);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      background: #1a1a1a;
+    }
+
+    .stat-prefix {
+      font-family: var(--font-meta);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-prefix strong {
+      color: var(--color-gold);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text-heading);
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .stat-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #a0a0a0;
+      font-family: var(--font-serif);
+    }
+
+    .stat-desc em {
+      color: #dfdfdf;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       4. EDITORIAL FOOTER
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #888;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1px;
+      background-color: var(--color-gold);
+      margin: 1.5rem auto;
+      opacity: 0.5;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      opacity: 0.4;
+    }
+
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: var(--color-black);
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .editorial-header {
+        padding: 1.2rem 1.2rem 0.5rem;
+      }
+      .meta-bar {
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+      }
+      .editorial-stage {
+        padding: 1rem 1.2rem 2rem;
+      }
+      .article-host {
+        padding: 2.5rem 1.5rem;
+      }
+      .article-host h1 {
+        font-size: 2.2rem;
+      }
+      .stat-number {
+        font-size: 2.5rem;
+      }
+      .editorial-footer {
+        padding: 2.2rem 1.2rem 6.5rem; 
+      }
+      .footer-quote {
+        font-size: 1.05rem;
+      }
+      .nav-issue-btn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.2rem;
+      }
+      .nav-issue-btn:hover {
+        transform: translateX(50%) translateY(-2px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="magazine-page">
+
+    <div class="brand-logo-wrapper">
+      <img src="main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" onerror="this.style.display='none'" />
+    </div>
+
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">ISSUE — 02</div>
+        <div class="meta-col meta-center">MONTHLY EDITION</div>
+        <div class="meta-col meta-right">SEP 2026</div>
+      </div>
+    </header>
+
+    <section class="editorial-stage">
+      <article class="article-host">
+        <h1>Seaweed in Numbers</h1>
+        <div class="subtitle">The Blueprint of an Underwater Revolution</div>
+
+        <!-- DIET & NUTRITION SECTION -->
+        <div class="category-section">
+          <h2 class="category-header"><span>🍽️</span> Diet & Nutrition</h2>
+          <div class="stats-grid">
+            
+            <div class="stat-card">
+              <div class="stat-prefix"><strong>Do You Know?</strong></div>
+              <div class="stat-number">8% – 40%</div>
+              <div class="stat-desc">
+                Minerals make up a staggering <em>8% to 40%</em> of seaweed's total dry weight, absorbing nutrients directly from the ocean water.
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-prefix"><strong>Do You Know?</strong></div>
+              <div class="stat-number">20%</div>
+              <div class="stat-desc">
+                In Japan, seaweed is such a culinary staple that roughly <em>20% (one-fifth)</em> of the population eats it with their daily meals.
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-prefix"><strong>Do You Know?</strong></div>
+              <div class="stat-number">47%</div>
+              <div class="stat-desc">
+                Just <em>1 tablespoon (7 grams)</em> of dried seaweed can pack up to <em>47%</em> of your daily value of copper and <em>4 grams</em> of protein.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- INDUSTRY & GLOBAL IMPACT SECTION -->
+        <div class="category-section">
+          <h2 class="category-header"><span>📈</span> Industry & Global Impact</h2>
+          <div class="stats-grid">
+            
+            <div class="stat-card">
+              <div class="stat-prefix"><strong>Do You Know?</strong></div>
+              <div class="stat-number">35M+</div>
+              <div class="stat-desc">
+                The global seaweed aquaculture sector produces over <em>35 million metric tons</em> of biomass every single year.
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-prefix"><strong>Do You Know?</strong></div>
+              <div class="stat-number">98%</div>
+              <div class="stat-desc">
+                Nearly <em>98%</em> of the entire world's farmed seaweed supply originates from coastal communities in Asia.
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-prefix"><strong>Do You Know?</strong></div>
+              <div class="stat-number">10%</div>
+              <div class="stat-desc">
+                Utilizing just <em>0.03%</em> of the ocean's surface for farming could expand global food supplies by a massive <em>10%</em>.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      "Adaptation is neither an accident nor an afterthought—it is a continuous negotiation between structure and circumstance."
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span class="sep">|</span> 2026 <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <a href="#next-page" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>
