@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Magazine Template - The Ultimate Crux</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-canvas: #080808;
+      --bg-editorial-paper: #FAF6EB;
+      --color-black: #080808;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: #222;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL (Centered Content Wrapper)
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       0. BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ==========================================================================
+       1. UNIVERSAL EDITORIAL HEADER
+       ========================================================================== */
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #000000;
+    }
+
+    .meta-col { flex: 1; }
+    .meta-center { text-align: center; letter-spacing: 0.22em; }
+    .meta-right { text-align: right; }
+
+    /* ==========================================================================
+       2. DYNAMIC CONTENT SECTION (YELLOW / IVORY PADDING)
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 3.5rem 4rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Starter typography for inserted articles */
+    .article-host h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      color: #111;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .article-host h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      margin: 3rem 0 1.5rem;
+      color: #222;
+      border-bottom: 1px solid #d4d0c8;
+      padding-bottom: 0.5rem;
+    }
+
+    .article-host h3 {
+      font-family: var(--font-meta);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin: 2rem 0 1rem;
+      color: var(--color-gold);
+      text-transform: uppercase;
+    }
+
+    .article-host p, .article-host ul, .article-host li {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #333;
+      margin-bottom: 1.4rem;
+    }
+
+    .article-host ul {
+      padding-left: 2rem;
+    }
+
+    .article-host .intro-lead {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #444;
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 0 2rem;
+    }
+
+    /* ==========================================================================
+       NUMBER CARDS GRID (BLACK CARDS WITH HIGH-CONTRAST TEXT)
+       ========================================================================== */
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin: 3rem 0;
+    }
+
+    .number-card {
+      background-color: #080808;
+      border-top: 3.5px solid var(--color-gold);
+      padding: 2.5rem 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .number-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    }
+
+    .number-card .big-number {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-gold-hover);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .number-card .card-title {
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .number-card p {
+      font-size: 1.05rem;
+      color: #e5e5e5;
+      line-height: 1.75;
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+
+    /* ==========================================================================
+       EDITORIAL TABLES
+       ========================================================================== */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 2.5rem 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      background-color: #ffffff;
+    }
+
+    th, td {
+      border: 1px solid #d4d0c8;
+      padding: 1.2rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--color-black);
+      color: #ffffff;
+      font-family: var(--font-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fcfcfc;
+    }
+
+    /* ==========================================================================
+       SIGNATURE MESSAGE BOX (BLACK CARD MODE)
+       ========================================================================== */
+    .signature-box {
+      background: #080808;
+      border: 1px solid #222222;
+      padding: 4rem 3rem;
+      text-align: center;
+      margin-top: 5rem;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    
+    .signature-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: var(--color-gold);
+    }
+
+    .signature-box h3 {
+      font-family: var(--font-meta);
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: #a0a0a0;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .signature-box h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .signature-box p, .signature-box li {
+      font-size: 1.1rem;
+      color: #e5e5e5;
+      line-height: 1.85;
+    }
+
+    .signature-box .conclusion {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #e5e5e5;
+      max-width: 800px;
+      margin: 2rem auto 0;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       3. EDITORIAL FOOTER (Full Screen Width)
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: normal;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #f5f5f5;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1.5px;
+      background-color: var(--color-gold);
+      margin: 1.2rem auto;
+      opacity: 0.85;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d1d1d1;
+    }
+
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .editorial-header { padding: 1.2rem 1.2rem 0.5rem; }
+      .meta-bar { font-size: 0.7rem; letter-spacing: 0.08em; }
+      .editorial-stage { padding: 1rem 1.2rem 2rem; }
+      .article-host { padding: 2rem 1.5rem; }
+      .article-host h1 { font-size: 1.8rem; }
+      .editorial-footer { padding: 2.2rem 1.2rem 6.5rem; }
+      .nav-issue-btn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.2rem;
+      }
+      .nav-issue-btn:hover { transform: translateX(50%) translateY(-2px); }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="magazine-page">
+
+    <div class="brand-logo-wrapper">
+      <img src="main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+    </div>
+
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">VOL — 02</div>
+        <div class="meta-col meta-center">MONTHLY EDITION</div>
+        <div class="meta-col meta-right">AUG 2026</div>
+      </div>
+    </header>
+
+    <section class="editorial-stage">
+      <article class="article-host">
+        
+        <h1>The Ultimate Crux: A Pathway to Clean Air and Absolute Energy Independence</h1>
+        
+        <p class="intro-lead">
+          The ultimate solution for decarbonizing heavy industries—like borewell drilling—lies in a clear, sustainable pathway: Ocean → Seawater → Green Hydrogen → Zero GHG Emissions. Why this transition is our greatest opportunity for both the planet and our own self-reliance:
+        </p>
+
+        <h3>The Sustainable Fuel Loop:</h3>
+        <p>By utilizing Seawater Reverse Osmosis (SWRO) at coastal hubs, we can safely produce green hydrogen from the ocean. This process uses minimal seawater—only about 1,500 litres per 800-foot drill—and completely protects precious inland freshwater tables from being depleted.</p>
+
+        <h3>Immediate Climate Action & Clean Air:</h3>
+        <p>When heavy equipment runs on this green fuel, the exhaust is 100% pure water vapour. This immediately halts the release of toxic soot and carcinogenic particles into local communities, providing safe and breathable air. On a global scale, it shuts off the massive planetary warming cycle that otherwise traps hundreds of Terajoules of excess heat into our oceans.</p>
+
+        <h3>True Energy Independence:</h3>
+        <p>Perhaps the most strategic advantage is breaking free from fossil fuels. Scaling green hydrogen means that states and nations no longer need to lock themselves into burning tens of thousands of litres of imported crude oil or expensive petroleum byproducts like diesel. While we cannot erase the climate damage of the past, adopting this green hydrogen pathway universally ensures that we stop compounding our environmental debt. It is a powerful, incremental step that guarantees absolute energy self-reliance and a cleaner, healthier atmosphere for future generations.</p>
+
+        <h2>The Unspoken:</h2>
+        <p>A critical oversight in standard carbon footprint analysis is ignoring the "Planetary Heat Multiplier". The conversation around emissions usually stops at the tailpipe, leaving out the unspoken reality that emitted greenhouse gases remain in the atmosphere for decades. Over their lifetime, the heat trapped by these gases is over 150 times greater than the thermal heat released when burning the fuel itself. Furthermore, the unspoken solution to hydrogen production is Seawater Reverse Osmosis (SWRO) desalination at coastal hubs; this process requires only about 1,500 litres of seawater per drill and adds less than 1% to production costs, completely protecting inland freshwater tables.</p>
+
+        <div class="numbers-grid">
+          <div class="number-card">
+            <div class="big-number">3.05 TJ</div>
+            <div class="card-title">In One Number</div>
+            <p>This is the amount of excess thermal energy trapped in the world's oceans over a 100-year horizon from the emissions of just one 800-foot borewell drilled using a traditional 450 HP diesel compressor. To put this single number in perspective, 3.05 TJ is equivalent to the energy required to boil approximately 9 million litres of water.</p>
+          </div>
+        </div>
+
+        <h2>Why It Matters</h2>
+        <p>Transitioning to green hydrogen-powered compressors tackles three major crises at once:</p>
+        <ul>
+          <li><strong>Human Health:</strong> Traditional drilling spits out carcinogenic soot particles (PM 2.5) and acidic nitrogen oxides (NO x) directly onto farm workers and crops. Hydrogen emits 100% pure water vapour, immediately providing safe, breathable air for local villages.</li>
+          <li><strong>The Economy:</strong> An average deep well currently burns through ~550 litres of diesel, which costs farmers upwards of ₹ 50,000+ per well. Under the National Green Hydrogen Mission, the target cost of ₹ 150 to ₹ 200 per kg for green hydrogen could cut the operator's fuel bill down to ₹ 25,000 to ₹ 30,000, nearly halving the cost.</li>
+          <li><strong>Climate Halting:</strong> Switching to zero-emission hydrogen completely shuts off the massive planetary warming cycle caused by fossil fuels.</li>
+        </ul>
+
+        <h2>What Was History:</h2>
+        <p>Historically, accessing deep groundwater in India's hard crystalline rock (like granite or basalt) relied on Down-The-Hole (DTH) hammer drilling. To overcome groundwater pressure and lift heavy rock dust, this method required massive pneumatic power that was exclusively supplied by 400–450 HP heavy-duty diesel engines running for 8 to 12 hours non-stop. Historically, completing just one 800-foot drill meant burning around 550 litres of diesel and releasing 1,480 kg of direct CO 2 e.</p>
+
+        <h2>What Would Be Future If No CTA (Call to Action):</h2>
+        <p>If no action is taken to scale coastal green hydrogen production and adapt drilling rig powertrains, the environmental and economic damage will compound endlessly. For every 100 deep borewells drilled annually in a single state under the status quo, we lock in the burning of 62,000 litres of imported crude. Without a transition, these 100 wells will continue dumping roughly 2.5 tonnes of toxic soot and pollutants into rural communities and pump ~200 metric tonnes of greenhouse gases into the atmosphere every year. Ultimately, ignoring this transition will guarantee the continued trapping of 305 Terajoules of excess heat into our oceans annually per 100 drills, exacerbating the global warming crisis.</p>
+
+        <h2>Why a Hydrogen-Powered Borewell Compressor?</h2>
+        
+        <h3>1. The Story in Simple Numbers: One 800 ft Borewell</h3>
+        <p>When a drilling rig pulls into a farm to drill an 800-foot well in hard rock, a massive 450 HP diesel compressor runs non-stop for about 10 hours. Here is what happens behind the scenes with Diesel vs. Green Hydrogen:</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2">DRILLING ONE 800 FT BOREWELL</th>
+              </tr>
+              <tr>
+                <th>DIESEL COMPRESSOR</th>
+                <th>HYDROGEN COMPRESSOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🛢️ Fuel Burned: 550 Litres Diesel</td>
+                <td>💨 Fuel Used: 150 kg Clean H2</td>
+              </tr>
+              <tr>
+                <td>💰 Fuel Cost: ₹ 52,000 – ₹ 55,000</td>
+                <td>💰 Target Cost: ₹ 25,000 – ₹ 35,000 (at scale)</td>
+              </tr>
+              <tr>
+                <td>☁️ Air Exhaust: 1,480 kg CO2 + Black Soot</td>
+                <td>☁️ Air Exhaust: PURE WATER VAPOUR (0 kg CO2)</td>
+              </tr>
+              <tr>
+                <td>🌊 Ocean Heat: Traps ~3 Terajoules (TJ)</td>
+                <td>🌊 Ocean Heat: 0 Joules Added</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The 3 Big Practical Reasons to Switch</h2>
+        
+        <h3>① Your Health & Local Air (No More Toxic Choking Smoke)</h3>
+        <p>Today: A 450 HP diesel engine on full load spits out thick black smoke, carcinogenic soot particles (PM 2.5), and acidic nitrogen oxides (NO x) directly onto the farm, workers, and surrounding crops. With Hydrogen: The tailpipe emits 100% pure water vapour. The crew and farmers can stand near the rig without masks or burning eyes.</p>
+
+        <h3>② The "Hidden" Planetary Heat: Saving Our Oceans</h3>
+        <p>Burning 550 litres of diesel releases greenhouse gases that stay trapped in the sky for over 100 years. Over its lifetime in the air, the smoke from just one borewell traps 3.05 Terajoules of heat into the world's oceans—which is equivalent to the thermal energy needed to boil 9 million litres of water. Switching to green hydrogen completely shuts off this planetary warming cycle.</p>
+
+        <h3>③ Fuel Cost & Price Stability</h3>
+        <p>Diesel in India hovers around ₹ 90 to ₹ 100 per litre. That means every single deep well costs ₹ 50,000+ just in fuel. Under the National Green Hydrogen Mission, green hydrogen produced along coastal desalination hubs is targeted to drop to ₹ 150 to ₹ 200 per kg. At that price, drilling an 800 ft well will cost ₹ 25,000 to ₹ 30,000 in fuel, cutting the operator's fuel bill nearly in half.</p>
+
+        <h2>What Happens If a Single State Does 100 Drills a Year?</h2>
+        <p>If just 100 deep borewells are drilled annually in your district or state:</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>What We Measure</th>
+                <th>Diesel Setup (100 Drills)</th>
+                <th>Hydrogen Setup (100 Drills)</th>
+                <th>Your Net Savings & Gain</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fossil Fuel Burned</td>
+                <td>~62,000 Litres (drilling + trucks)</td>
+                <td>0 Litres Diesel</td>
+                <td>62,000 Litres imported crude avoided</td>
+              </tr>
+              <tr>
+                <td>Greenhouse Gas Released</td>
+                <td>~200 Metric Tonnes CO 2 e</td>
+                <td>0 kg at tailpipe</td>
+                <td>100% clean rural atmosphere</td>
+              </tr>
+              <tr>
+                <td>Heat Trapped in Oceans</td>
+                <td>~305 Terajoules (TJ)</td>
+                <td>0 Joules</td>
+                <td>Prevents boiling ~900 million L of water</td>
+              </tr>
+              <tr>
+                <td>Toxic Soot & Smoke ( NO x/ PM )</td>
+                <td>~2.5 Tonnes of pollutants</td>
+                <td>ZERO</td>
+                <td>Safe, breathable air for local villages</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>How Does It Work Without Stealing Drinking Water?</h2>
+        <p>A common question is: "Doesn't making hydrogen consume precious freshwater?" No. Green hydrogen for heavy equipment is produced at coastal desalination hubs using abundant seawater:</p>
+        <ul>
+          <li><strong>Seawater Reverse Osmosis (SWRO):</strong> High-efficiency plants take ocean water and remove the salt.</li>
+          <li><strong>Solar/Wind Power:</strong> Clean electricity splits that purified seawater into hydrogen and oxygen.</li>
+          <li><strong>The Math:</strong> To drill an 800 ft well, the hydrogen rig uses ~1,500 litres of desalinated seawater—about the size of one standard rooftop water tank. Zero ground water is wasted.</li>
+        </ul>
+
+        <div class="signature-box">
+          <h3>The Bottom Line:</h3>
+          <h2>THE 4-POINT DECISION CHECKLIST</h2>
+          
+          <ul style="list-style: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto 2rem;">
+            <li style="margin-bottom: 1rem;"><strong>[ ✔ ] SAME POWER:</strong> Delivers the same 450 HP torque and 320 PSI air pressure.</li>
+            <li style="margin-bottom: 1rem;"><strong>[ ✔ ] NO DRILLING DELAY:</strong> Finishes the 800 ft well in the same ~10 hours.</li>
+            <li style="margin-bottom: 1rem;"><strong>[ ✔ ] ZERO SMOKE:</strong> Zero black soot and fumes on the farmland.</li>
+            <li><strong>[ ✔ ] LOCAL IMPACT:</strong> Directly stops ocean heating and protects our own soil and climate.</li>
+          </ul>
+
+          <div class="conclusion">
+            <strong style="color: #ffffff;">Switching to a hydrogen compressor is not just a futuristic idea— it is the cleanest, smartest, and most responsible way to power heavy off-grid machinery.</strong>
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      Growth doesn't always follow the blueprint;
+      Sometimes, it rewrites it mid-stride
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy;
+      <span class="sep">|</span> 2026 <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <a href="#next-page" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>

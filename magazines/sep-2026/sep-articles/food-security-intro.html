@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Magazine Template - Food Security</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-canvas: #080808;
+      --bg-editorial-paper: #FAF6EB;
+      --color-black: #080808;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --color-subhead: #8A2E2E; /* Deep crimson for subheaders */
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: #222;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL (Centered Content Wrapper)
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       0. BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ==========================================================================
+       1. UNIVERSAL EDITORIAL HEADER
+       ========================================================================== */
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #000000;
+    }
+
+    .meta-col {
+      flex: 1;
+    }
+
+    .meta-center {
+      text-align: center;
+      letter-spacing: 0.22em;
+    }
+
+    .meta-right {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       2. DYNAMIC CONTENT SECTION
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 3.5rem 4rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Typography */
+    .article-host h1 {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .article-host h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      margin-top: 3rem;
+      margin-bottom: 1.2rem;
+      color: var(--color-subhead);
+    }
+
+    .article-host p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #333;
+      margin-bottom: 1.4rem;
+    }
+    
+    .article-host strong {
+      font-weight: 600;
+      color: #111;
+    }
+
+    .article-host ul {
+      margin-bottom: 1.4rem;
+      padding-left: 2rem;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #333;
+    }
+
+    .article-host li {
+      margin-bottom: 0.6rem;
+    }
+    
+    /* Faded, lengthier divider */
+    .content-divider {
+      border: 0;
+      height: 1.5px;
+      background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+      margin: 3.5rem auto;
+      width: 80%;
+      max-width: 600px;
+      opacity: 0.6;
+    }
+
+    .equation-box {
+      background: rgba(0,0,0,0.03);
+      padding: 2rem;
+      border-left: 3px solid var(--color-gold);
+      margin: 2.5rem 0;
+      font-family: var(--font-meta);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #111;
+    }
+    
+    .equation-box .operator {
+      color: var(--color-gold);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .equation-box .result {
+      display: block;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       3. EDITORIAL FOOTER
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: normal;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #f5f5f5;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1.5px;
+      background-color: var(--color-gold);
+      margin: 1.2rem auto;
+      opacity: 0.85;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d1d1d1;
+    }
+
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .editorial-header { padding: 1.2rem 1.2rem 0.5rem; }
+      .meta-bar { font-size: 0.7rem; letter-spacing: 0.08em; }
+      .editorial-stage { padding: 1rem 1.2rem 2rem; }
+      .article-host { padding: 2rem 1.5rem; }
+      .article-host h1 { font-size: 1.8rem; }
+      .article-host h2 { font-size: 1.4rem; }
+      .editorial-footer { padding: 2.2rem 1.2rem 6.5rem; }
+      .footer-quote { font-size: 1.05rem; }
+      .nav-issue-btn { right: 50%; transform: translateX(50%); bottom: 1.2rem; }
+      .nav-issue-btn:hover { transform: translateX(50%) translateY(-2px); }
+    }
+  </style>
+</head>
+<body>
+
+<main class="magazine-page">
+    <div class="brand-logo-wrapper">
+      <img src="main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+    </div>
+
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">ISSUE — 02</div>
+        <div class="meta-col meta-center">MONTHLY EDITION</div>
+        <div class="meta-col meta-right">SEP 2026</div>
+      </div>
+    </header>
+
+    <section class="editorial-stage">
+      <article class="article-host">
+        
+        <h1>ARE WE SURE TO GET FOOD TOMORROW?</h1>
+        
+        <p>Imagine waking up tomorrow and asking a very simple question:<br>
+        “Where will our food come from?”</p>
+        
+        <p>Not from a supermarket shelf. Not from a warehouse. Not from an app. But from the farms, water, soil, weather, storage systems, roads and people that make that shelf possible.</p>
+        
+        <p>Today, extreme weather is making that chain increasingly fragile.</p>
+        
+        <ul>
+          <li>Heatwaves can damage crops at critical growth stages.</li>
+          <li>Severe floods can destroy fields, roads, warehouses and transport networks.</li>
+          <li>Droughts can reduce harvests and leave farmers without enough water for the next season.</li>
+          <li>Sudden downpours and shifting monsoons can disrupt the agricultural calendar itself.</li>
+        </ul>
+        
+        <hr class="content-divider" />
+
+        <h2>1.25 BILLION TONNES</h2>
+        
+        <p>FAO estimates that around 1.25 billion tonnes of food are lost after harvest and before retail each year. Think about that.</p>
+        
+        <p>Food has already been grown. Water has already been used. Land has already been occupied. Farmers have already invested their labour. And yet enormous quantities never become food on someone’s plate.</p>
+        
+        <p>So perhaps the first question is not:<br>
+        “How do we grow more food?”<br>
+        Perhaps it is:<br>
+        “How do we protect what we already grow?”</p>
+        
+        <div class="equation-box">
+          <strong>FIRST — PROTECT WHAT WE GROW.</strong><br>
+          <strong>THEN — GROW WHAT WE NEED.</strong>
+        </div>
+
+        <p>That philosophy changes everything. It means investing not only in production, but also in climate-resilient agriculture, safe storage, cold chains, processing, reliable transport, crop diversity, healthy soils and water security.</p>
+        
+        <p>It also means moving towards safer, lower-risk agricultural practices and integrated pest management—using biological, cultural, mechanical and other preventive approaches wherever practical, and using chemical controls responsibly when genuinely necessary. Because food security should never mean securing today’s harvest by weakening tomorrow’s soil and water.</p>
+
+        <hr class="content-divider" />
+
+        <h2>THE FOOD SECURITY EQUATION</h2>
+        
+        <div class="equation-box">
+          <div><span class="operator">+</span> Resilient Production</div>
+          <div><span class="operator">+</span> Safe Storage</div>
+          <div><span class="operator">+</span> Less Loss</div>
+          <div><span class="operator">+</span> Crop Diversity</div>
+          <div><span class="operator">+</span> Healthy Soil</div>
+          <div><span class="operator">+</span> Water Security</div>
+          <div><span class="operator">+</span> Safer & Integrated Pest Management</div>
+          <div class="result"><span class="operator">=</span> FOOD SECURITY</div>
+        </div>
+
+        <p>Not merely:<br>
+        MORE FOOD.<br>
+        But:<br>
+        MORE RELIABLE FOOD.</p>
+        
+        <p>And that brings us to a larger question for Tamil Nadu:<br>
+        We are food-secure today. Can we remain food-secure when the climate becomes more uncertain, the population grows, and the next extreme event arrives?</p>
+        
+        <p>That is the question of Self-Reliance — Food Security. Not predicting the future. Preparing for it.</p>
+
+      </article>
+    </section>
+  </main>
+
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      FIRST — PROTECT WHAT WE GROW. THEN — GROW WHAT WE NEED.
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span class="sep">|</span> 2026 <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <a href="#next-page" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>
