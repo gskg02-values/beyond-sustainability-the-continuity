@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Magazine Template - Coral Reefs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & BASE VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-canvas: #080808;
+      --bg-editorial-paper: #FAF6EB;
+      --color-black: #080808;
+      --color-gold: #c59b27;
+      --color-gold-hover: #dfaf2f;
+      --font-meta: 'Montserrat', sans-serif;
+      --font-serif: 'Lora', serif;
+      --font-display: 'Cinzel', serif;
+      --page-max-width: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: #222;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       MAGAZINE PAGE SHELL
+       ========================================================================== */
+    .magazine-page {
+      width: 100%;
+      max-width: var(--page-max-width);
+      flex: 1 0 auto;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       0. BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ==========================================================================
+       1. UNIVERSAL EDITORIAL HEADER
+       ========================================================================== */
+    .editorial-header {
+      padding: 1.5rem 2.5rem 0.8rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111;
+      padding-bottom: 0.9rem;
+      border-bottom: 3.5px solid #000000;
+    }
+
+    .meta-col { flex: 1; }
+    .meta-center { text-align: center; letter-spacing: 0.22em; }
+    .meta-right { text-align: right; }
+
+    /* ==========================================================================
+       2. DYNAMIC CONTENT SECTION 
+       ========================================================================== */
+    .editorial-stage {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1.5rem 2.5rem 3rem;
+    }
+
+    .article-host {
+      width: 100%;
+      max-width: 1300px;
+      background-color: var(--bg-editorial-paper);
+      padding: 3.5rem 4rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
+      position: relative;
+      transition: all 0.3s ease;
+      
+      /* ADDED: Textured background pattern */
+      background-image: radial-gradient(rgba(211, 203, 184, 0.6) 1px, transparent 0.9px);
+      background-size: 20px 20px;
+      background-position: 0 0;
+      overflow: hidden; /* Contains the watermark */
+    }
+
+    /* ADDED: Watermark styling */
+    .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: clamp(8rem, 15vw, 15rem);
+      font-family: var(--font-meta);
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.035);
+      z-index: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .content-wrapper h1 {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: #111;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    
+    .content-wrapper h2.subtitle {
+      font-family: var(--font-meta);
+      font-size: 1.3rem;
+      letter-spacing: 0.2em;
+      color: var(--color-gold);
+      text-align: center;
+      margin-bottom: 3.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ADDED: Zig Zag Row Layout */
+    .zig-zag-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .zig-col {
+      flex: 1 1 40%;
+      min-width: 300px;
+    }
+
+.zig-col svg, 
+    .zig-col img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      display: block;
+    }
+
+
+
+    .content-wrapper h3 {
+      font-family: var(--font-meta);
+      font-size: 1.1rem;
+      color: #004F8A;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .content-wrapper p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #6C0000;
+      margin-bottom: 1.4rem;
+      text-align: justify;
+    }
+
+    /* ==========================================================================
+       3. EDITORIAL FOOTER 
+       ========================================================================== */
+    .editorial-footer {
+      width: 100%;
+      background-color: var(--color-black);
+      color: #ffffff;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      max-width: 850px;
+      line-height: 1.5;
+      color: #f5f5f5;
+    }
+
+    .footer-divider {
+      width: 320px;
+      max-width: 60%;
+      height: 1.5px;
+      background-color: var(--color-gold);
+      margin: 1.2rem auto;
+      opacity: 0.85;
+    }
+
+    .footer-theme {
+      font-family: var(--font-meta);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d1d1d1;
+    }
+
+    .footer-copyright {
+      margin-top: 1.8rem;
+      font-family: var(--font-meta);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-copyright .sep {
+      color: var(--color-gold);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    .nav-issue-btn {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-meta);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.25s ease, transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .nav-issue-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-issue-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .editorial-header { padding: 1.2rem 1.2rem 0.5rem; }
+      .meta-bar { font-size: 0.7rem; letter-spacing: 0.08em; }
+      .editorial-stage { padding: 1rem 1.2rem 2rem; }
+      .article-host { padding: 2rem 1.5rem; }
+      .editorial-footer { padding: 2.2rem 1.2rem 6.5rem; }
+      .footer-quote { font-size: 1.05rem; }
+      .nav-issue-btn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1.2rem;
+      }
+      .nav-issue-btn:hover { transform: translateX(50%) translateY(-2px); }
+      .zig-zag-row { gap: 2rem; margin-bottom: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="magazine-page">
+    <div class="brand-logo-wrapper">
+      <img src="../../main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+    </div>
+
+    <header class="editorial-header">
+      <div class="meta-bar">
+        <div class="meta-col meta-left">ISSUE — 02</div>
+        <div class="meta-col meta-center">MONTHLY EDITION</div>
+        <div class="meta-col meta-right">SEP 2026</div>
+      </div>
+    </header>
+
+    <section class="editorial-stage">
+      <article class="article-host">
+        <!-- Background Watermark -->
+        <div class="watermark">NATURE</div>
+        
+        <div class="content-wrapper">
+            <h1>NATURE'S ENGINEERING</h1>
+            <h2 class="subtitle">Coral Reefs</h2>
+            
+            <!-- Row 1: Text | Image -->
+            <div class="zig-zag-row">
+              <div class="zig-col text-col">
+                <h3>Nature's Underwater Architects</h3>
+                <p>Coral reefs are built by tiny animals called coral polyps, yet together they create some of the largest living structures on Earth.</p>
+                <p>Over thousands of years, these tiny organisms construct intricate limestone skeletons that become strong, porous, and remarkably durable. Their complex structure provides shelter for thousands of marine species while reducing the force of incoming waves before they reach the shore.</p>
+                <p>Coral reefs protect coastlines from erosion, support rich marine ecosystems, and continuously grow by repairing and expanding their own structures. Nature demonstrates that strength, protection, and sustainability can exist together in a single design.</p>
+              </div>
+              
+	      <div class="zig-col">
+  			<img src="../images/NE-image-1.jpg" alt="A descriptive alt text here" />
+	      </div>
+
+
+            </div>
+
+            <!-- Row 2: Image | Text -->
+            <div class="zig-zag-row">
+              	      <div class="zig-col">
+  			<img src="../images/NE-image-2.jpg" alt="A descriptive alt text here" />
+	             </div>
+
+
+              <div class="zig-col text-col">
+                <h3>Nature → Discovery → Innovation</h3>
+                <p>Scientists studied the porous architecture of coral reefs and discovered how they combine strength with lightweight construction.</p>
+                <p>They also observed how reefs dissipate wave energy, support diverse life, and naturally build complex three-dimensional structures over time.</p>
+                <p>These discoveries inspired engineers to rethink how buildings, coastal defences, and medical materials could be designed.</p>
+              </div>
+            </div>
+
+            <!-- Row 3: Text | Image -->
+            <div class="zig-zag-row">
+              <div class="zig-col text-col">
+                <h3>What We Developed</h3>
+                <p>Inspired by coral reefs, researchers have developed artificial reef systems to restore marine habitats, reef-inspired coastal breakwaters that reduce wave energy, lightweight porous construction materials, and advanced bone graft materials because the porous structure of certain corals resembles human bone.</p>
+                <p>Coral-inspired designs are also influencing 3D-printed architecture, water filtration systems, and habitat restoration technologies.</p>
+              </div>
+              
+	      <div class="zig-col">
+  			<img src="../images/NE-image-3.jpg" alt="A descriptive alt text here" />
+	      </div>
+
+            </div>
+
+            <!-- Row 4: Image | Text -->
+            <div class="zig-zag-row">
+              
+	      <div class="zig-col">
+  			<img src="../images/NE-image-4.jpg" alt="A descriptive alt text here" />
+	      </div>
+
+              <div class="zig-col text-col">
+                <h3>THE CONTINUITY MESSAGE</h3>
+                <p>A coral reef is not built by one giant builder, but by millions of tiny organisms working together.</p>
+                <p>Nature reminds us that lasting structures are created through patience, cooperation, and continuity—not speed alone.</p>
+              </div>
+            </div>
+
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="editorial-footer">
+    <p class="footer-quote">
+      Growth doesn't always follow the blueprint; Sometimes, it rewrites it mid-stride
+    </p>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-theme">
+      BEYOND SUSTAINABILITY — THE CONTINUITY
+    </div>
+
+    <div class="footer-copyright">
+      &copy; <span class="sep">|</span> 2026 <span class="sep">|</span> FOR PLANET FOR FUTURE
+    </div>
+
+    <a href="#next-page" class="nav-issue-btn" title="Proceed to next section">
+      <span>Inside This Issue</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>
