@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Kural: Reflections</title>
+    <style>
+        :root {
+            --nature-deep: #1B3022; 
+            --nature-gold: #D4AF37; 
+            --nature-light: #F5F5DC; 
+            --lesson-red: #E6C200;   /* Updated to your gold preference */
+            --shift-gold: #E6C200;   
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: var(--nature-deep);
+            color: var(--nature-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your-macro-image.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid var(--nature-gold);
+        }
+
+        .punch-caption {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--nature-gold);
+            margin: 15px auto 0 auto;
+            max-width: 800px;
+        }
+
+        .about-space {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 25px;
+            text-align: center;
+            border: 1px dashed var(--nature-gold);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--nature-gold);
+            color: var(--nature-gold);
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .header-btn:hover { background: var(--nature-gold); color: var(--nature-deep); }
+
+        .reflection-container {
+            max-width: 800px;
+            margin: 80px auto; 
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .reflection-card {
+            margin-bottom: 60px;
+            padding: 25px;
+            border-left: 4px solid var(--nature-gold);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .reflection-card h3 {
+            text-decoration: underline;
+            text-underline-offset: 8px;
+            text-decoration-thickness: 1px;
+            color: var(--nature-gold);
+            margin-top: 0;
+        }
+
+        .label-exhibit { color: var(--nature-gold); font-weight: bold; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .label-lesson { color: var(--lesson-red); font-weight: bold; font-style: normal; }
+        .label-shift { color: var(--shift-gold); font-weight: bold; font-style: normal; }
+
+        .back-home {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--nature-gold);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 1px solid var(--nature-gold);
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        footer { text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.3); margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <section class="hero" id="home">
+        <h1>HARVESTING NATURE'S BOUNTY</h1>
+        <h3>The Five - Fold compass: Navigating the Modern World through Primal Truths</h3>
+        <p class="punch-caption">"Nature does not Write History; It Exhibits Survival. Legacy is an Ancient Pulse; A Billion-Year Victory etched in Silence."</p>
+    </section>
+
+    <div class="about-space">
+        <h4>About this Space</h4>
+        <p>Before the first sage spoke, the first seed had already mastered the art of survival. A "Bottom-Up" approach (Nature to Human).This work exhibits the "Soil" and the "Sap" that made that fruit of SURVIVAL, CONTINUITY possible. It is a companion to the ancient, proving that the laws of a good life are not just "human ideas"—they are planetary requirements. Nature -  A fusion of Biology, Physics, Chemistry, Mathematics. </p>
+    </div>
+
+    <div class="home-grid">
+        <a href="#wing1" class="header-btn">1. Foundations</a>
+        <a href="#wing2" class="header-btn">2. Systems</a>
+        <a href="#wing3" class="header-btn">3. Boundaries</a>
+        <a href="#wing4" class="header-btn">4. Progress</a>
+        <a href="#wing5" class="header-btn">5. Continuity</a>
+    </div>
+
+    <div id="wing1" class="reflection-container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Wing 1: Foundations of Nature</h2>
+        <div id="wing1-list"></div>
+        <div style="text-align: center;"><a href="#home" class="back-home">↑ Back to Home</a></div>
+    </div>
+
+    <div id="wing2" class="reflection-container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Wing 2: Nature's Systems</h2>
+        <div id="wing2-list"></div>
+        <div style="text-align: center;"><a href="#home" class="back-home">↑ Back to Home</a></div>
+    </div>
+
+    <div id="wing3" class="reflection-container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Wing 3: Boundaries & Rhythms</h2>
+        <div id="wing3-list"></div>
+        <div style="text-align: center;"><a href="#home" class="back-home">↑ Back to Home</a></div>
+    </div>
+
+    <div id="wing4" class="reflection-container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Wing 4: Responsible Progress</h2>
+        <div id="wing4-list"></div>
+        <div style="text-align: center;"><a href="#home" class="back-home">↑ Back to Home</a></div>
+    </div>
+
+    <div id="wing5" class="reflection-container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Wing 5: Continuity - Legacy</h2>
+        <div id="wing5-list"></div>
+        <div style="text-align: center;"><a href="#home" class="back-home">↑ Back to Home</a></div>
+    </div>
+
+    
+<footer>
+
+<p>SEE BUT DEEPLY SEE; TO UNDERSTAND UNSAID</p>
+<p>Legacy is the Value added to the Base; Become the Soil</p>
+ 
+</footer>
+
+    <script src="wing1.js"></script>
+    <script src="wing2.js"></script>
+    <script src="wing3.js"></script>
+    <script src="wing4.js"></script>
+    <script src="wing5.js"></script>
+
+    <script>
+        function renderWing(data, targetId) {
+            const container = document.getElementById(targetId);
+            // Safety check: Only try to render if the variable exists and has data
+            if (!container || typeof data === 'undefined' || data.length === 0) return;
+            
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'reflection-card';
+                card.innerHTML = `
+                    <h3>${item.title}</h3>
+                    <p><span class="label-exhibit">${item.exhibit}:</span> ${item.content}</p>
+                    <p><em><span class="label-lesson">The Lesson:</span> ${item.lesson}</em></p>
+                    <p><em><span class="label-shift">The Shift:</span> ${item.shift}</em></p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Planting the seeds for all wings
+        renderWing(wing1Data, 'wing1-list');
+        renderWing(wing2Data, 'wing2-list');
+        renderWing(wing3Data, 'wing3-list');
+        renderWing(wing4Data, 'wing4-list');
+        renderWing(wing5Data, 'wing5-list');
+    </script>
+</body>
+</html>
