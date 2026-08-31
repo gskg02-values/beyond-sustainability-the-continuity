@@ -68,6 +68,27 @@
       position: relative; 
     }
 
+
+/* ==========================================================================
+       0. BRAND LOGO
+       ========================================================================== */
+    .brand-logo-wrapper {
+      width: 100%;
+      padding: 2.5rem 2.5rem 0 0.5rem;
+      background-color: #ffffff; 
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-width: 120px; 
+      height: auto;
+      object-fit: contain;
+    }
+
+
+
+
     /* ==========================================================================
        1. UNIVERSAL EDITORIAL HEADER
        ========================================================================== */
@@ -520,6 +541,12 @@
   </style>
 </head>
 <body>
+
+<!-- Brand Logo -->
+  <div class="brand-logo-wrapper">
+    <img src="../../../home-images/main-logo.jpg" alt="Beyond Sustainability" class="brand-logo" />
+  </div>
+
 
   <!-- Universal Editorial Header -->
   <header class="editorial-header">
