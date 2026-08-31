@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unspoken Ocean - Magazine Cover</title>
+    <style>
+        /* Base Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+
+    position: relative; 
+    min-height: 100vh; 
+
+
+        }
+
+        /* Main Container */
+        .magazine-container {
+            max-width: 1920px;
+            margin: 0 auto;
+            background-color: #EAD8C0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* 1920x1080 Image Area (16:9 Aspect Ratio) */
+        .cover-image {
+            width: 100%;
+            /* 1080 divided by 1920 = 56.25% */
+            padding-top: 56.25%; 
+            position: relative;
+            background-color: #e0e0e0;
+            /* Replace the URL below with your actual image path */
+            background-image: url('images/cover-page-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Typography Section Below Image */
+        .content-section {
+            padding: 60px 20px;
+            text-align: center;
+            flex-grow: 1; /* Pushes the footer to the bottom */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .issue-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #111;
+        }
+
+        .sub-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #444;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Footer Section */
+        .magazine-footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .caption-space {
+            font-size: 1.1rem;
+            color: #bbbbbb;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #444;
+            line-height: 1.6;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            color: #e0e0e0;
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 900px) {
+            .main-title { font-size: 3rem; }
+            .sub-title { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 600px) {
+            .main-title { font-size: 2rem; }
+            .sub-title { font-size: 1.1rem; }
+            .content-section { padding: 40px 15px; }
+        }
+
+
+/* --- Floating "Inside This Issue" Tab Styles --- */
+.toc-tab {
+    position: absolute; /* Changed from fixed to absolute */
+    bottom: 40px; /* Positions tab ~1 inch above the very bottom of the page */
+    right: 30px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.toc-tab:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toc-tab:active {
+    transform: translateY(0);
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="magazine-container">
+        
+        <div class="cover-image"></div>
+
+        <main class="content-section">
+            <div class="issue-text">Magazine Issue - Sep 2026</div>
+            <h1 class="main-title">BEFORE WE INVENTED IT</h1>
+            <h2 class="sub-title">Nature ---> Resource ---> Intelligence ---> Human Intervention </h2>
+        </main>
+
+        <footer class="magazine-footer">
+            <div class="caption-space">
+                " We keep inventing tools to understand and survive on the planet. Nature has been doing it all along."
+            </div>
+
+            <p class="footer-title">Beyond Sustainability – The Continuity</p>
+        </footer>
+
+    </div>
+
+<a href="editors-note.html" class="toc-tab">Inside This Issue</a>
+
+</body>
+</html>
